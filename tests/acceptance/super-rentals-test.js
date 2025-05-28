@@ -9,8 +9,8 @@ module('Acceptance | super rentals', function (hooks) {
     await visit('/');
     assert.strictEqual(currentURL(), '/');
 
-    assert.dom("nav").exists();
-    assert.dom("nav h1").hasText("SuperRentals");
+    assert.dom('nav').exists();
+    assert.dom('nav h1').hasText('SuperRentals');
 
     assert.dom('h2').hasText('Welcome to Super Rentals!');
 
@@ -43,15 +43,18 @@ module('Acceptance | super rentals', function (hooks) {
     let tweetURL = new URL(button.href);
     assert.strictEqual(tweetURL.host, 'twitter.com');
 
-    assert.strictEqual(tweetURL.searchParams.get('url'), `${window.location.origin}/rentals/grand-old-mansion`,);
+    assert.strictEqual(
+      tweetURL.searchParams.get('url'),
+      `${window.location.origin}/rentals/grand-old-mansion`,
+    );
   });
 
   test('visting /about', async function (assert) {
     await visit('/about');
     assert.strictEqual(currentURL(), '/about');
 
-    assert.dom("nav").exists();
-    assert.dom("nav h1").hasText("SuperRentals");
+    assert.dom('nav').exists();
+    assert.dom('nav h1').hasText('SuperRentals');
 
     assert.dom('h2').hasText('About Super Rentals');
     assert
@@ -70,8 +73,8 @@ module('Acceptance | super rentals', function (hooks) {
     await visit('/getting-in-touch');
     assert.strictEqual(currentURL(), '/getting-in-touch');
 
-    assert.dom("nav").exists();
-    assert.dom("nav h1").hasText("SuperRentals");
+    assert.dom('nav').exists();
+    assert.dom('nav h1').hasText('SuperRentals');
 
     assert.dom('h2').hasText('Contact Us');
 
@@ -91,9 +94,9 @@ module('Acceptance | super rentals', function (hooks) {
     await visit('/');
 
     assert.dom('nav').exists();
-    assert.dom('nav a.menu-index').hasText("SuperRentals");
-    assert.dom('nav a.menu-about').hasText("About");
-    assert.dom('nav a.menu-contact').hasText("Contact");
+    assert.dom('nav a.menu-index').hasText('SuperRentals');
+    assert.dom('nav a.menu-about').hasText('About');
+    assert.dom('nav a.menu-contact').hasText('Contact');
 
     await click('nav a.menu-about');
     assert.strictEqual(currentURL(), '/about');
@@ -103,5 +106,5 @@ module('Acceptance | super rentals', function (hooks) {
 
     await click('nav a.menu-index');
     assert.strictEqual(currentURL(), '/');
-  })
+  });
 });

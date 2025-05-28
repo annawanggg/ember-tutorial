@@ -4,7 +4,10 @@ import Service from '@ember/service';
 import { find, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-const MOCK_URL = new URL('/foo/bar?baz=true#some-section', window.location.origin,);
+const MOCK_URL = new URL(
+  '/foo/bar?baz=true#some-section',
+  window.location.origin,
+);
 
 class MockRouterService extends Service {
   get currentURL() {
@@ -23,18 +26,20 @@ module('Integration | Component | share-button', function (hooks) {
       let url = new URL(link.href);
 
       return url.searchParams.get(param);
-    }
+    };
   });
 
   test('basic usage', async function (assert) {
     await render(hbs`<ShareButton>Tweet this!</ShareButton>`);
 
-    assert.dom('a').hasAttribute('target', '_blank')
-    .hasAttribute('rel', 'external nofollow noopener noreferrer')
-    .hasAttribute('href', /^https:\/\/twitter\.com\/intent\/tweet/)
-    .hasClass('share')
-    .hasClass('button')
-    .containsText('Tweet this!');
+    assert
+      .dom('a')
+      .hasAttribute('target', '_blank')
+      .hasAttribute('rel', 'external nofollow noopener noreferrer')
+      .hasAttribute('href', /^https:\/\/twitter\.com\/intent\/tweet/)
+      .hasClass('share')
+      .hasClass('button')
+      .containsText('Tweet this!');
 
     assert.strictEqual(this.tweetParam('url'), MOCK_URL.href);
   });
@@ -54,7 +59,7 @@ module('Integration | Component | share-button', function (hooks) {
       Tweet this!
       </ShareButton>`);
 
-    assert.strictEqual(this.tweetParam('hashtags'), "foo,bar,baz");
+    assert.strictEqual(this.tweetParam('hashtags'), 'foo,bar,baz');
   });
 
   test('it supports passing @via', async function (assert) {
@@ -63,7 +68,7 @@ module('Integration | Component | share-button', function (hooks) {
       Tweet this!
       </ShareButton>`);
 
-    assert.strictEqual(this.tweetParam('via'), "emberjs");
+    assert.strictEqual(this.tweetParam('via'), 'emberjs');
   });
 
   test('it supports adding additional classes', async function (assert) {
@@ -92,5 +97,4 @@ module('Integration | Component | share-button', function (hooks) {
       .hasAttribute('href', /^https:\/\/twitter\.com\/intent\/tweet/)
       .hasAttribute('rel', 'external nofollow noopener noreferrer');
   });
-
 });

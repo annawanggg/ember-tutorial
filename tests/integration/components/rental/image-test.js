@@ -7,7 +7,6 @@ module('Integration | Component | rental/image', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders the given rental image', async function (assert) {
-
     await render(hbs`
       <Rental::Image
         src="/assets/images/teaching-tomster.png"
@@ -15,13 +14,14 @@ module('Integration | Component | rental/image', function (hooks) {
       />
     `);
 
-    assert.dom('.image img').exists()
-    .hasAttribute('src', '/assets/images/teaching-tomster.png')
-    .hasAttribute('alt', 'Teaching Tomster');
+    assert
+      .dom('.image img')
+      .exists()
+      .hasAttribute('src', '/assets/images/teaching-tomster.png')
+      .hasAttribute('alt', 'Teaching Tomster');
   });
 
   test('clicking on component toggles size', async function (assert) {
-
     await render(hbs`
       <Rental::Image
         src="/assets/images/teaching-tomster.png"
@@ -30,7 +30,7 @@ module('Integration | Component | rental/image', function (hooks) {
     `);
 
     assert.dom('button.image').exists();
-    
+
     assert.dom('button.image').doesNotHaveClass('large');
     assert.dom('button.image small').hasText('View Larger');
 
@@ -43,5 +43,5 @@ module('Integration | Component | rental/image', function (hooks) {
 
     assert.dom('button.image').doesNotHaveClass('large');
     assert.dom('button.image small').hasText('View Larger');
-  })
+  });
 });
