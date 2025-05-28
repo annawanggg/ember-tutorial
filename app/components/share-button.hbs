@@ -1,0 +1,13 @@
+{{!-- remember order of ...attributes relative to other attribs is important
+specify href, target, rel, class after ...attributes so they cant be overwritten when component is invoked --}}
+<a 
+    ...attributes 
+    href={{this.shareURL}}
+    target="_blank" 
+    rel="external nofollow noopener noreferrer" 
+    {{!-- class attribute is exception where any values for class passed by invoker get
+    concatenated with existing class attribute; allows invoker to add any extra classes needed for styling --}}
+    class="share button"
+>
+    {{yield}}
+</a>

@@ -1,0 +1,16 @@
+<div class="map">
+    {{!-- ember applies attributes in the order they appear
+    placing ...attributes after alt allows invoker to provide an alternative alt text value --}}
+    {{!-- bc src width and height are provided after ...attributes they will not get overrided --}}
+    <img
+        alt="Map image at coordinates {{@lat}}, {{@lng}}"
+        ...attributes
+        {{!-- src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{@lng}},{{@lat}},{{@zoom}}/{{@width}}x{{@height}}@2x?access_token={{this.token}}" --}}
+        
+        {{!-- ember automatically tracks any variables that were accessed while computing a getter's value --}}
+        {{!-- cannot mark getters as @tracked, just automatic --}}
+        src={{this.src}}
+        width={{@width}}
+        height={{@height}}
+    >
+</div>

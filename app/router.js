@@ -6,4 +6,9 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function () {});
+Router.map(function () {
+  this.route('about');
+  this.route('contact', { path: '/getting-in-touch' });
+  // :rental_id is a dynamic segment; when routes are evaluates, will be substitued w id of the property we are trying to nav to 
+  this.route('rental', { path: '/rentals/:rental_id' });
+});

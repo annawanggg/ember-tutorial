@@ -1,0 +1,21 @@
+{{!-- <div class="image"> --}}
+    {{!-- instead of hardcoding specific values for src and alt, use ...attributes so the
+    html attributes can be passed in when invoking the component --}}
+    {{!-- like {{yield}} but for HTML attributes specifically --}}
+    {{!-- <img ...attributes>
+</div> --}}
+
+
+{{!-- use {{on}} handler to attach the this.toggleSize function as a click handler for the button --}}
+{{!-- expression version of {{if}} takes two args, 1st argument is the condition, 
+2nd argument is the expression that should be evaluated if the condition is true. --}}
+<button type="button" class="image {{if this.isLarge "large"}}" {{on "click" this.toggleSize}}>
+    <img ...attributes>
+    {{!-- {{#if this.isLarge}}
+    <small>View Smaller</small>
+    {{else}}
+    <small>View Larger</small>
+    {{/if}} --}}
+    {{!-- pptionally, {{if}} can take a third arg for what the expression should evaluate into if the condition is false --}}
+    <small>View {{if this.isLarge "Smaller" "Larger"}}</small>
+</button>
