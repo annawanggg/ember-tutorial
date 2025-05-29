@@ -4,11 +4,4 @@
   <LinkTo @route="about" class="button">About Us</LinkTo>
 </Jumbo>
 
-<div class="rentals">
-  <ul class="results">
-    {{!-- use {{#each}} and {{/each}} syntax to loop thru array returned by the model hook --}}
-    {{#each @model as |rental|}}
-      <li><Rental @rental={{rental}} /></li>
-    {{/each}}
-  </ul>
-</div>
+<Rentals @rentals={{@model}} />
